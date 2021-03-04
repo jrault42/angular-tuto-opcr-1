@@ -9,8 +9,6 @@ import {AppareilService} from './services/appareil.service';
 export class AppComponent implements OnInit {
   isAuth = false;
 
-  lastUpdate = new Date();
-
   myAppareils: Array<any>;
 
   constructor(private appareilService: AppareilService) {
@@ -21,15 +19,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.myAppareils = this.appareilService.myAppareils;
-  }
-
-  onAllumer(): void {
-    this.appareilService.switchOnAll();
-  }
-
-  onEteindre(): void {
-    if (confirm('Voulez-vous vraiment tout éteindre ?')) {
-      this.appareilService.switchOffAll();
-    }
   }
 }

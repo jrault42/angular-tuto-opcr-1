@@ -1,21 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Authentification</a></li>
+        <li class="active"><a href="#">Appareils</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Mes appareils</h2>
-      <ul class="list-group">
-
-          <app-appareil
-            *ngFor="let appareil of myAppareils; let i = index"
-            [index]="i"
-            [appareilOn]="appareil.statusOn"
-            [appareilName]="appareil.name"
-            [ngClass]="{'list-group-item': true,
-                    'list-group-item-success': appareil.statusOn,
-                    'list-group-item-danger': !appareil.statusOn}"></app-appareil>
-      </ul>
-      <p>Mis à jour le : {{lastUpdate | date: 'short'}}</p>
-      <button class="btn btn-success" (click)="onAllumer()" [disabled]="!isAuth">Tout allumer</button>
-      <button class="btn btn-danger" (click)="onEteindre()" [disabled]="!isAuth">Tout éteindre</button>
+     <app-appareil-view></app-appareil-view>
     </div>
   </div>
 </div>
