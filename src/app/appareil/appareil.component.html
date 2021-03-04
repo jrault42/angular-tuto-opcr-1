@@ -1,7 +1,6 @@
-<h4>Appareil : {{ appareilName }}</h4>
-<h5 [ngStyle]="{color: getColor()}">{{ getStatus() }}</h5>
-<div style="width:20px;height:20px;background-color:green;"
-     *ngIf="appareilOn"></div>
-<div style="width:20px;height:20px;background-color:red;"
-     *ngIf="!appareilOn"></div>
-<input type="text" class="form-control" [(ngModel)]="appareilName" />
+<li>
+  <h4>Appareil : {{ appareilName }}</h4>
+  <h5 [ngStyle]="{color: getColor()}">{{ getStatus() }}</h5>
+  <input type="text" class="form-control" [(ngModel)]="appareilName" />
+  <button class="btn" (click)="onSwitch()"><span *ngIf="!appareilOn">Allumer</span> <span *ngIf="appareilOn">Eteindre</span></button>
+</li>

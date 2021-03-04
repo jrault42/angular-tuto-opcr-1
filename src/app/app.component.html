@@ -4,16 +4,18 @@
       <h2>Mes appareils</h2>
       <ul class="list-group">
 
-        <li *ngFor="let appareil of myAppareils" class="list-group-item"
-
-        [ngClass]="{'list-group-item': true,
+          <app-appareil
+            *ngFor="let appareil of myAppareils; let i = index"
+            [index]="i"
+            [appareilOn]="appareil.statusOn"
+            [appareilName]="appareil.name"
+            [ngClass]="{'list-group-item': true,
                     'list-group-item-success': appareil.statusOn,
-                    'list-group-item-danger': !appareil.statusOn}">
-          <app-appareil [appareilOn]="appareil.statusOn" [appareilName]="appareil.name"></app-appareil>
-        </li>
+                    'list-group-item-danger': !appareil.statusOn}"></app-appareil>
       </ul>
       <p>Mis à jour le : {{lastUpdate | date: 'short'}}</p>
       <button class="btn btn-success" (click)="onAllumer()" [disabled]="!isAuth">Tout allumer</button>
+      <button class="btn btn-danger" (click)="onEteindre()" [disabled]="!isAuth">Tout éteindre</button>
     </div>
   </div>
 </div>

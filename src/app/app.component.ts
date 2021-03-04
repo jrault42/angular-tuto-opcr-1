@@ -1,36 +1,35 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AppareilService} from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  constructor() {
-    setTimeout(() => {
-     this.isAuth = true;
-    }, 4000);
-  }
+export class AppComponent implements OnInit {
   isAuth = false;
 
   lastUpdate = new Date();
 
-  myAppareils = [
-    {
-      name: 'Machine à laver',
-      statusOn: true
-    },
-    {
-      name: 'Frigo',
-      statusOn: true
-    },
-    {
-      name: 'Ordinateur',
-      statusOn: false
-    }
-  ];
+  myAppareils: Array<any>;
+
+  constructor(private appareilService: AppareilService) {
+    setTimeout(() => {
+     this.isAuth = true;
+    }, 4000);
+  }
+
+  ngOnInit(): void {
+    this.myAppareils = this.appareilService.myAppareils;
+  }
 
   onAllumer(): void {
-    this.myAppareils.forEach(appareil => appareil.statusOn = true)
+    this.appareilService.switchOnAll();
+  }
+
+  onEteindre(): void {
+    if (confirm('Voulez-vous vraiment tout éteindre ?')) {
+      this.appareilService.switchOffAll();
+    }
   }
 }
