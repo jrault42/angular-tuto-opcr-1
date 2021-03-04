@@ -21,7 +21,6 @@ export class AppareilService {
     this.myAppareils.forEach(appareil => appareil.statusOn = false);
   }
   switchOnAppareil(i): void {
-    console.log("COUCOU ON VEUT SWITCH ON", this.myAppareils[i].statusOn)
     this.myAppareils[i].statusOn = true;
   }
   switchOffAppareil(i): void {
