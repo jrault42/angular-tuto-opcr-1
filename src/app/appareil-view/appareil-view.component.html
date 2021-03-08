@@ -8,7 +8,8 @@
     [appareilName]="appareil.name"
     [ngClass]="{'list-group-item': true,
                     'list-group-item-success': appareil.statusOn,
-                    'list-group-item-danger': !appareil.statusOn}"></app-appareil>
+                    'list-group-item-danger': !appareil.statusOn}"
+    [id]="appareil.id"></app-appareil>
 </ul>
 <p>Mis à jour le : {{lastUpdate | date: 'short'}}</p>
 <button class="btn btn-success" (click)="onAllumer()" [disabled]="!isAuth">Tout allumer</button>

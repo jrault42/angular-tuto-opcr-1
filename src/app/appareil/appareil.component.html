@@ -1,5 +1,6 @@
 <li>
   <h4>Appareil : {{ appareilName }}</h4>
+  <a [routerLink]="[id]">Détails</a>
   <h5 [ngStyle]="{color: getColor()}">{{ getStatus() }}</h5>
   <input type="text" class="form-control" [(ngModel)]="appareilName" />
   <button class="btn" (click)="onSwitch()"><span *ngIf="!appareilOn">Allumer</span> <span *ngIf="appareilOn">Eteindre</span></button>

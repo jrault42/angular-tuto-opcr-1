@@ -1,14 +1,17 @@
 export class AppareilService {
   myAppareils = [
     {
+      id: 1,
       name: 'Machine à laver',
       statusOn: true
     },
     {
+      id: 2,
       name: 'Frigo',
       statusOn: true
     },
     {
+      id: 3,
       name: 'Ordinateur',
       statusOn: false
     }
@@ -25,5 +28,11 @@ export class AppareilService {
   }
   switchOffAppareil(i): void {
     this.myAppareils[i].statusOn = false;
+  }
+
+  getAppareilById(id: string) {
+    return this.myAppareils.find(app => {
+      return app.id.toString() === id;
+    });
   }
 }
