@@ -10,12 +10,13 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthService} from './services/auth.service';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+import {AuthGuard} from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  {path: 'appareils', component: AppareilViewComponent},
-  {path: 'appareils/:id', component: SingleAppareilComponent},
+  {path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent},
+  {path: 'appareils/:id', canActivate: [AuthGuard], component: SingleAppareilComponent},
   {path: 'auth', component: AuthComponent},
-  {path: '', component: AppareilViewComponent}
+  {path: '', canActivate: [AuthGuard], component: AppareilViewComponent}
 ];
 
 @NgModule({
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AppareilService, AuthService],
+  providers: [AppareilService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
